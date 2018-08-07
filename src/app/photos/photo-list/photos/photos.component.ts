@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Photo } from '../../photo/photo';
 
 @Component({
@@ -6,15 +6,16 @@ import { Photo } from '../../photo/photo';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.css']
 })
-export class PhotosComponent implements OnInit {
+export class PhotosComponent implements OnChanges {
 
   @Input() photos: Photo[] = [];
   rows: any[] = [];
 
   constructor() { }
 
-  ngOnInit() {
-    this.rows = this.groupColumns(this.photos);
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.photos)
+      this.rows = this.groupColumns(this.photos);
   }
 
   groupColumns(photos: Photo[]) {
@@ -23,7 +24,7 @@ export class PhotosComponent implements OnInit {
     for(let index = 0; index < photos.length; index += 3) {
       newRows.push(photos.slice(index, index + 3));
     }
-    
+
     return newRows;
   }
 }
