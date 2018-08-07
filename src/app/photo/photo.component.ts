@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'ap-photo',
@@ -6,6 +6,6 @@ import { Component } from "@angular/core";
 })
 
 export class PhotoComponent {
-    description = 'Leão';
-    url = 'http://elelur.com/data_images/mammals/lion/lion-05.jpg';
+    @Input() description = '';
+    @Input() url = '';
 }
