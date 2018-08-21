@@ -9,6 +9,9 @@
 /node_modules
 /api/node_modules
 
+#API db
+/api/data.db
+
 # IDEs and editors
 /.idea
 .project
