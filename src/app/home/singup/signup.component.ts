@@ -9,7 +9,8 @@ import { SignUpService } from './signup.service';
 import { PlataformDetectorService } from '../../core/plataform-detector/plataform-detector.service';
 
 @Component({
-    templateUrl: './signup.component.html'
+    templateUrl: './signup.component.html',
+    providers: [UserNotTakenValidatorService]
 })
 export class SignUpComponent implements OnInit {
 
@@ -17,8 +18,8 @@ export class SignUpComponent implements OnInit {
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
     constructor(
-        private formBuilder: FormBuilder, 
-        private userNotTakenValidatorService: UserNotTakenValidatorService, 
+        private formBuilder: FormBuilder,
+        private userNotTakenValidatorService: UserNotTakenValidatorService,
         private signupService: SignUpService,
         private router: Router,
         private plataformDetectorService: PlataformDetectorService
@@ -60,7 +61,7 @@ export class SignUpComponent implements OnInit {
                 ]
             ]
         });
-        
+
         this.plataformDetectorService.isPlatformBrowser() && this.emailInput.nativeElement.focus();
     }
 
