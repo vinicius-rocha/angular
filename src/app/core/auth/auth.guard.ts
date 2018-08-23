@@ -5,17 +5,18 @@ import { UserService } from '../user/user.serrvice';
 import { Observable } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class AuthGuard implements CanActivate{
+export class AuthGuard implements CanActivate {
 
-    constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        if(this.userService.isLogged()){
-            this.router.navigate(['user', this.userService.getUserName()])
-            return false;
-        }
-        return true;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+
+    if (!this.userService.isLogged()) {
+      this.router.navigate([''])
+      return false;
     }
+    return true;
+  }
 }
