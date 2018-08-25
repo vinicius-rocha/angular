@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
-import { UserService } from '../user/user.serrvice';
+import { UserService } from '../user/user.service';
 
 const API_URL = 'http://localhost:3000';
 
