@@ -16,9 +16,9 @@ export class PhotoListComponent implements OnInit {
   hasMore: boolean = true;
   currentPage: number = 1;
   userName: string = '';
-  
+
   constructor(private activatedRoute: ActivatedRoute, private photoService: PhotoService) { }
-  
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.userName = params.userName;
@@ -32,7 +32,7 @@ export class PhotoListComponent implements OnInit {
       .subscribe(photos => {
         this.filter = '';
         this.photos = this.photos.concat(photos);
-        if(!photos.length)
+        if (!photos.length)
           this.hasMore = false;
       });
   }
