@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Photo } from '../photo/photo';
 import { PhotoService } from '../photo/photo.service';
-import { LoadingService } from '../../shared/components/loading/loading.service';
 
 @Component({
   selector: 'ap-photo-list',
@@ -17,15 +16,10 @@ export class PhotoListComponent implements OnInit {
   hasMore: boolean = true;
   currentPage: number = 1;
   userName: string = '';
-  
-  constructor(
-    private activatedRoute: ActivatedRoute, 
-    private photoService: PhotoService,
-    private loadingService: LoadingService
-  ) { }
-  
+
+  constructor(private activatedRoute: ActivatedRoute, private photoService: PhotoService) { }
+
   ngOnInit(): void {
-    this.loadingService.start();
     this.activatedRoute.params.subscribe(params => {
       this.userName = params.userName;
       this.photos = this.activatedRoute.snapshot.data['photos'];
@@ -38,7 +32,7 @@ export class PhotoListComponent implements OnInit {
       .subscribe(photos => {
         this.filter = '';
         this.photos = this.photos.concat(photos);
-        if(!photos.length)
+        if (!photos.length)
           this.hasMore = false;
       });
   }
