@@ -9,7 +9,7 @@ export class LoadingService {
     
     loadginSuject = new Subject<LoadingType>();
 
-    getLoadin() {
+    getLoading() {
         return this.loadginSuject
         .asObservable()
         .pipe(startWith(LoadingType.STOPED));
