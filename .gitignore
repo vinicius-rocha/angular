@@ -6,8 +6,7 @@
 /out-tsc
 
 # dependencies
-/node_modules
-/api/node_modules
+**/node_modules
 
 #API db
 /api/data.db
