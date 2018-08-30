@@ -7,6 +7,7 @@ import { UserNotTakenValidatorService } from './user-not-taken.validator.service
 import { NewUser } from './new-user';
 import { SignUpService } from './signup.service';
 import { PlataformDetectorService } from '../../core/plataform-detector/plataform-detector.service';
+import { userNamePassword } from './username-password.validator';
 
 @Component({
     templateUrl: './signup.component.html',
@@ -60,6 +61,8 @@ export class SignUpComponent implements OnInit {
                     Validators.maxLength(14)
                 ]
             ]
+        }, {
+            validator: userNamePassword
         });
 
         this.plataformDetectorService.isPlatformBrowser() && this.emailInput.nativeElement.focus();
